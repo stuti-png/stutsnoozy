@@ -217,63 +217,226 @@ header nav a,header nav a[aria-current=page] {font-size:31.36px;}
    top of each other. This block is last so the small-screen result is
    decided in one place rather than inferred from the cascade. */
 
-/* Short label for the longest plaque; the anchor keeps the full name. */
-.nav-abbr { display: none; }
-
+/* Mobile scene: the 16:9 artwork cannot fill a portrait screen, so its own
+   sky and ground extend past the top and bottom edges. Colours are sampled
+   from the illustration's edge rows, and the top edge is feathered so the
+   join reads as haze rather than a cut. */
 @media (max-width: 700px) {
-  .nav-full { display: none; }
-  .nav-abbr { display: inline; }
-
-  /* Three plaques, one row, no wrapping. */
-  header { top: 14px; left: 12px; right: 12px; flex-wrap: nowrap; align-items: center; gap: 6px; }
-  header nav { width: auto; margin-left: auto; gap: 6px; flex-wrap: nowrap; }
-  .wordmark, header nav a, header nav a[aria-current=page] {
-    height: 46px; min-height: 46px; padding: 0 4px;
-    border-width: 3px 20px; border-image-width: 3px 20px;
-    font-size: 19px; white-space: nowrap;
-  }
-  .wordmark { font-size: 21px; }
-
-  /* The artwork is 16:9, so a portrait screen can never be filled by it.
-     Extend its own sky and ground past the top and bottom edges instead of
-     leaving the page colour showing. The two colours are sampled from the
-     illustration's top and bottom rows, so the join is seamless. */
-  .room { background: #cfccce; }
-  .room-visual { width: 100%; height: 100svh; display: grid; grid-template-rows: 0.82fr auto 1fr; justify-items: center; overflow: hidden; }
+  .room { background: #cfc3ba; }
+  .room-visual { width: 100%; height: 100svh; display: grid; grid-template-rows: 1fr auto 0.58fr; justify-items: center; overflow: hidden; }
   .scene { grid-row: 2; width: 200%; }
   .scene::before, .scene::after {
     content: ''; display: block; position: absolute; left: 0; right: 0; height: 100svh;
     background: none; mask-image: none; animation: none; transform: none; inset-inline: 0;
   }
-  .scene::before { top: auto; bottom: 100%; background: linear-gradient(#c6c3c6, #cfccce 70%); }
-  .scene::after { bottom: auto; top: 100%; background: linear-gradient(#dd9c73, #c8854f); }
+  .scene::before { top: auto; bottom: 100%; background: linear-gradient(#c9bdb5 0%, #cdc1b8 60%, #cfc3ba 100%); }
+  .scene::after { bottom: auto; top: 100%; background: linear-gradient(#da9c77 0%, #d79a76 55%, #d29775 100%); }
 }
 
-@media (max-width: 430px) {
-  .wordmark, header nav a, header nav a[aria-current=page] { font-size: 17px; padding: 0 2px; border-width: 3px 16px; border-image-width: 3px 16px; }
-  .wordmark { font-size: 19px; }
-  header { gap: 4px; }
-  header nav { gap: 4px; }
+/* ---- Navigation: wordmark left, three-dot menu right -------------------
+   Replaces the row of plaques. The artwork is the subject of every scene,
+   so navigation stays small and gets out of its way. This block is last and
+   overrides the plaque rules above for these elements. */
+
+header { position: absolute; z-index: 5; top: 20px; left: 20px; right: 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: nowrap; padding: 0; }
+
+.wordmark {
+  width: auto; flex: 0 0 auto; height: 52px; min-height: 52px; padding: 0 26px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 26px; font-weight: 400; color: var(--brick);
+  background: transparent url('/assets/floral-nav-plaque.png') center / 100% 100% no-repeat;
+  border: 0; border-radius: 0; overflow: visible; white-space: nowrap;
 }
 
-/* Three plaques of one width, so the row reads as a set rather than three
-   sizes. The widest label ("Portfolio भंडार") sets the measure. */
-header { align-items: center; }
-.wordmark, header nav a, header nav a[aria-current=page] { justify-content: center; }
+.nav-menu { position: relative; flex: 0 0 auto; }
+
+.nav-toggle {
+  display: grid; place-content: center; gap: 5px; justify-items: center;
+  width: 52px; height: 52px; padding: 0; cursor: pointer;
+  background: transparent url('/assets/floral-nav-plaque.png') center / 100% 100% no-repeat;
+  border: 0; border-radius: 0;
+}
+.nav-toggle span { display: block; width: 21px; height: 2px; border-radius: 1px; background: var(--brick); transition: transform .2s cubic-bezier(.2,.8,.3,1), opacity .2s ease; }
+.nav-toggle:hover span { background: #682c21; }
+.nav-toggle[aria-expanded=true] span:first-child { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded=true] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded=true] span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+header nav {
+  position: absolute; z-index: 6; top: calc(100% + 8px); right: 0; min-width: 224px;
+  display: flex; flex-direction: column; gap: 0; padding: 6px;
+  background: var(--paper); border: 4px double var(--green); border-radius: 3px;
+  box-shadow: 0 10px 26px -12px #2b1d1259;
+  opacity: 0; transform: translateY(-6px) scale(.97); transform-origin: 100% 0;
+  visibility: hidden; pointer-events: none;
+  transition: opacity .18s ease, transform .18s cubic-bezier(.2,.8,.3,1), visibility .18s;
+}
+header nav[data-open=true] { opacity: 1; transform: none; visibility: visible; pointer-events: auto; }
+
+header nav a, header nav a[aria-current=page] {
+  width: auto; height: auto; min-height: 48px; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 0 16px; white-space: nowrap; overflow: visible;
+  font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 21px; font-weight: 400;
+  color: var(--brick); background: none; border: 0; border-radius: 2px; text-decoration: none;
+}
+header nav a + a { border-top: 1px solid #49654d33; }
+header nav a:hover { background: #efe3c6; }
+header nav a[aria-current=page] { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+header nav a[aria-current=page]::after { content: none; }
+
 @media (max-width: 700px) {
-  header { gap: 6px; }
-  header nav { gap: 6px; }
-  .wordmark, header nav a, header nav a[aria-current=page] {
-    width: clamp(84px, calc((100vw - 36px) / 3), 150px);
-    flex: 0 1 clamp(84px, calc((100vw - 36px) / 3), 150px);
-    padding: 0 2px; font-size: clamp(14px, 4.1vw, 19px);
+  header { top: 14px; left: 14px; right: 14px; gap: 10px; }
+  .wordmark { height: 46px; min-height: 46px; font-size: 22px; padding: 0 22px; }
+  .nav-toggle { width: 46px; height: 46px; }
+  header nav { min-width: 196px; }
+  header nav a, header nav a[aria-current=page] { font-size: 19px; min-height: 46px; }
+}
+@media (prefers-reduced-motion: reduce) { header nav { transition: none; } }
+
+/* Dissolve the artwork's top and bottom edges into the extended sky and
+   ground so the join reads as haze rather than a cut line. */
+@media (max-width: 700px) {
+  .room-art {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
   }
-  .wordmark { font-size: clamp(15px, 4.4vw, 21px); }
+  .scene::before { background: linear-gradient(#c9bdb5 0%, #cdc1b8 60%, #cfc3ba 100%); }
+  .scene::after { background: linear-gradient(#da9c77 0%, #d0905f 60%, #c4844e 100%); }
 }
-/* One height for every plaque, and a label that fits inside its own width. */
-.wordmark, header nav a, header nav a[aria-current=page] { height: 52px; min-height: 52px; }
+
+/* ---- Menu button and panel, in the site's own framing language --------
+   The floral plaque is a wide graphic; stretching it into a square squashed
+   the painted border. The menu now uses the same cream paper and double
+   green frame as the bioscope surrounds and the links dialog. */
+
+.nav-toggle {
+  width: 50px; height: 50px; padding: 0; gap: 5px;
+  display: grid; place-content: center; justify-items: center;
+  background: var(--paper); border: 3px double var(--green); border-radius: 2px;
+  box-shadow: 0 1px 0 #ffffff80 inset, 0 2px 6px -4px #2b1d1266;
+  cursor: pointer; transition: background .16s ease, border-color .16s ease;
+}
+.nav-toggle:hover { background: #f3e8ca; }
+.nav-toggle span { width: 19px; height: 2px; border-radius: 0; background: var(--brick); }
+
+header nav {
+  min-width: 212px; padding: 0;
+  background: var(--paper); border: 3px double var(--green); border-radius: 2px;
+  box-shadow: 0 14px 30px -16px #2b1d1266;
+}
+/* A painted notch tying the panel to the button it opened from. */
+header nav::before {
+  content: ''; position: absolute; top: -7px; right: 16px; width: 12px; height: 12px;
+  background: var(--paper); border-left: 3px double var(--green); border-top: 3px double var(--green);
+  transform: rotate(45deg);
+}
+header nav a, header nav a[aria-current=page] {
+  position: relative; min-height: 52px; padding: 0 20px; justify-content: center;
+  font-size: 22px; letter-spacing: .01em;
+}
+header nav a + a { border-top: 0; }
+/* A lotus-coloured hairline instead of a plain rule. */
+header nav a + a::before {
+  content: ''; position: absolute; top: 0; left: 18px; right: 18px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lotus) 22%, var(--lotus) 78%, transparent);
+  opacity: .5;
+}
+header nav a:hover { background: #f1e5c6; }
+
 @media (max-width: 700px) {
-  .wordmark, header nav a, header nav a[aria-current=page] { height: 46px; min-height: 46px; font-size: clamp(13px, 3.6vw, 17px); } overflow: hidden;
-  .wordmark { font-size: clamp(14px, 3.9vw, 19px); }
-  header nav a span[lang=hi] { font-size: .88em; }
+  .nav-toggle { width: 46px; height: 46px; }
+  .nav-toggle span { width: 18px; }
+  header nav { min-width: 196px; }
+  header nav a, header nav a[aria-current=page] { font-size: 20px; min-height: 48px; }
+}
+
+/* ---- Menu uses the site's own plaques --------------------------------
+   No panel, no border, no notch. Opening the menu reveals the same floral
+   plaques the navigation already used, stacked instead of crowded in a row. */
+
+.nav-toggle {
+  width: auto; min-width: 58px; height: 52px; padding: 0 10px; gap: 5px;
+  display: grid; place-content: center; justify-items: center;
+  background: none; box-shadow: none; border-radius: 0;
+  border: solid transparent; border-width: 4px 30px;
+  border-image: url('/assets/floral-nav-slice.svg') 40 260 40 260 fill / 4px 30px / 0 stretch;
+  cursor: pointer;
+}
+.nav-toggle:hover { background: none; filter: brightness(.97); }
+.nav-toggle span { width: 19px; height: 2px; background: var(--brick); border-radius: 0; }
+
+header nav {
+  min-width: 0; padding: 0; gap: 8px;
+  background: none; border: 0; border-radius: 0; box-shadow: none;
+  align-items: flex-end;
+}
+header nav::before { content: none; }
+
+header nav a, header nav a[aria-current=page] {
+  width: auto; min-height: 52px; height: 52px; padding: 0 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  white-space: nowrap; font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 23px;
+  color: var(--brick); background: none; box-shadow: none; border-radius: 0;
+  border: solid transparent; border-width: 4px 30px;
+  border-image: url('/assets/floral-nav-slice.svg') 40 260 40 260 fill / 4px 30px / 0 stretch;
+}
+header nav a:hover { background: none; filter: brightness(.97); }
+header nav a + a::before { content: none; }
+header nav a[aria-current=page] { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+
+@media (max-width: 700px) {
+  .nav-toggle { min-width: 54px; height: 48px; border-width: 3px 24px; border-image-width: 3px 24px; }
+  .nav-toggle span { width: 18px; }
+  header nav a, header nav a[aria-current=page] {
+    height: 48px; min-height: 48px; font-size: 19px;
+    border-width: 3px 24px; border-image-width: 3px 24px;
+  }
+}
+
+/* Menu plaques size to their own label instead of collapsing. */
+header nav { width: max-content; max-width: calc(100vw - 28px); }
+header nav a, header nav a[aria-current=page] { width: max-content; max-width: 100%; flex: 0 0 auto; }
+
+/* The ground below the scene reads as continuous earth, not a colour block:
+   almost no shift across it, and it is shorter than the sky above. */
+@media (max-width: 700px) {
+  .room-visual { grid-template-rows: 1fr auto 0.58fr; }
+  .scene::after { background: linear-gradient(#da9c77 0%, #d79a76 55%, #d29775 100%); }
+}
+
+/* ---- Simple, uncontained menu ---------------------------------------- */
+.nav-toggle {
+  width: 44px; height: 44px; min-width: 0; padding: 0; gap: 7px;
+  display: grid; place-content: center; justify-items: center;
+  background: none; border: 0; border-image: none; border-radius: 0; box-shadow: none;
+  cursor: pointer;
+}
+.nav-toggle:hover { background: none; filter: none; }
+.nav-toggle:hover span { background: #682c21; }
+.nav-toggle span { width: 26px; height: 3px; border-radius: 2px; background: var(--brick); }
+.nav-toggle span:nth-child(2) { display: none; }
+.nav-toggle[aria-expanded=true] span:first-child { transform: translateY(5px) rotate(45deg); }
+.nav-toggle[aria-expanded=true] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+
+header nav {
+  width: max-content; max-width: calc(100vw - 32px); min-width: 0;
+  gap: 2px; padding: 0; align-items: flex-end;
+  background: none; border: 0; border-radius: 0; box-shadow: none;
+}
+header nav::before { content: none; }
+header nav a, header nav a[aria-current=page] {
+  width: max-content; max-width: 100%; flex: 0 0 auto;
+  height: auto; min-height: 44px; padding: 6px 2px;
+  display: inline-flex; align-items: center; justify-content: flex-end;
+  background: none; border: 0; border-image: none; border-radius: 0; box-shadow: none;
+  font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 22px; color: var(--brick);
+  white-space: nowrap; text-shadow: 0 1px 2px #f8edcfcc, 0 0 10px #f8edcf99;
+}
+header nav a:hover { filter: none; color: #682c21; text-decoration: underline; text-underline-offset: 5px; }
+header nav a + a::before { content: none; }
+@media (max-width: 700px) {
+  .nav-toggle span { width: 24px; }
+  header nav a, header nav a[aria-current=page] { font-size: 19px; }
 }

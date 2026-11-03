@@ -10,6 +10,8 @@ export default function App() {
   const lastRoute = useRef(location.hash === '#links' ? '#home' : location.hash || '#home');
   const [view, setView] = useState<View>(initialView);
   const [linksOpen, setLinksOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   useEffect(() => {
@@ -27,10 +29,30 @@ export default function App() {
     else if (dialog.current?.open) { dialog.current.close(); previousFocus.current?.focus(); }
   }, [linksOpen]);
   useEffect(() => { if (view === 'home') document.title = 'Stuti — Welcome to my bioscope'; }, [view]);
+  useEffect(() => { setMenuOpen(false); }, [route]);
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKey(e: KeyboardEvent) { if (e.key === 'Escape') setMenuOpen(false); }
+    function onPointer(e: PointerEvent) { if (!menuRef.current?.contains(e.target as Node)) setMenuOpen(false); }
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onPointer);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onPointer); };
+  }, [menuOpen]);
   function closeLinks() { setLinksOpen(false); history.replaceState(null, '', lastRoute.current); }
   const reading = view === 'fsas' || (view === 'achievements' && route !== '#achievements');
   return <div className={`portfolio${reading ? ' is-reading' : ''}`}>
-    <header><a className="wordmark" href="#home" aria-label="Stuti — landing page">stuti</a><nav aria-label="Main navigation"><a className="fsa-nav" href="#fsas" aria-label="Frequently Sought Answers" aria-current={view === 'fsas' && !linksOpen ? 'page' : undefined}><span className="nav-full" aria-hidden="true">Frequently Sought Answers</span><span className="nav-abbr" aria-hidden="true">FSAs</span></a><a className="bhandaar-nav" href="#achievements" aria-label="Portfolio Bhandaar" aria-current={view === 'achievements' && !linksOpen ? 'page' : undefined}><span className="nav-full" aria-hidden="true"><span className="nav-english">Portfolio</span> <span lang="hi">भंडार</span></span><span className="nav-abbr" aria-hidden="true" lang="hi">भंडार</span></a></nav></header>
+    <header>
+      <a className="wordmark" href="#home" aria-label="Stuti — landing page">stuti</a>
+      <div className="nav-menu" ref={menuRef}>
+        <button className="nav-toggle" aria-label="Menu" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(o => !o)}>
+          <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
+        </button>
+        <nav id="main-nav" aria-label="Main navigation" data-open={menuOpen}>
+          <a className="fsa-nav" href="#fsas" aria-current={view === 'fsas' && !linksOpen ? 'page' : undefined}>Frequently Sought Answers</a>
+          <a className="bhandaar-nav" href="#achievements" aria-current={view === 'achievements' && !linksOpen ? 'page' : undefined}>Portfolio Bhandaar</a>
+        </nav>
+      </div>
+    </header>
     <main className="room" hidden={view !== 'home'} aria-label="Stuti’s bioscope at the mela">
       <div className="room-visual"><div className="scene"><img className="room-art" src={scene.background} alt="A hand-painted bioscope with peacocks and lotus flowers, surrounded by a lively Indian mela"/><h1 className="bioscope-title" style={{ left: `${scene.title.x * 100}%`, top: `${scene.title.y * 100}%`, width: `${scene.title.width * 100}%`, height: `${scene.title.height * 100}%` }}>Welcome to Stuti’s Bioscope</h1><Television active={view === 'home'} /></div></div>
     </main>

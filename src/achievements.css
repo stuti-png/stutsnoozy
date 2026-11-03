@@ -183,8 +183,6 @@
 .fsa-answer h2 { margin:0 0 16px; font-size:23px; }
 .fsa-answer p:last-child { margin-bottom:22px; }
 @media(max-width:700px) {
- header nav {flex-wrap:wrap;gap:6px;}
- header nav a {font-size:21px;padding-inline:2px;}
  .reading-page {padding-top:210px;}
  .reading-column {padding-top:0;}
  .fsa-answer h2 {font-size:22px;}
@@ -218,7 +216,14 @@
 .comic-dots span {width:6px;height:6px;border-radius:50%;background:#49654d44;}
 .comic-dots [aria-current=true] span {background:var(--peacock);width:7px;height:7px;}
 /* Keep active and inactive English tab labels identical on every route. */
-header nav a,header nav a[aria-current=page] {font-size:31.36px;}
-@media(max-width:700px) {header nav a,header nav a[aria-current=page] {font-size:23.52px;}}
 .collection-lead {color:var(--brick);}
 .library-related {margin:16px 0 0;}
+
+/* Dissolve the cart artwork's sky and ground into the page on small screens,
+   so the scene has no cut line above or below it. */
+@media (max-width: 700px) {
+  .mobile-cart .cart-art, .portfolio-cart .cart-art {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 86%, transparent 100%);
+  }
+}
