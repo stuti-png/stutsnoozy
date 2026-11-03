@@ -126,7 +126,7 @@ nav a { font-size: 20px; }
   font-size: 28px;
 }
 .wordmark:hover, nav a:hover { background: none; filter: brightness(.97); }
-.bioscope-title { font-size: 2.05cqw; }
+.bioscope-title { font-size: 1.86cqw; }
 .room { display: block; min-height: 100svh; }
 .room-visual { display: grid; place-items: center; min-height: 100svh; }
 .scene { width: max(100%,177.68332svh); }
@@ -222,15 +222,15 @@ header nav a,header nav a[aria-current=page] {font-size:31.36px;}
    from the illustration's edge rows, and the top edge is feathered so the
    join reads as haze rather than a cut. */
 @media (max-width: 700px) {
-  .room { background: #cfc3ba; }
+  .room { background: #d4c6c2; }
   .room-visual { width: 100%; height: 100svh; display: grid; grid-template-rows: 1fr auto 0.58fr; justify-items: center; overflow: hidden; }
-  .scene { grid-row: 2; width: 200%; }
+  .scene { grid-row: 2; width: 150%; }
   .scene::before, .scene::after {
     content: ''; display: block; position: absolute; left: 0; right: 0; height: 100svh;
     background: none; mask-image: none; animation: none; transform: none; inset-inline: 0;
   }
-  .scene::before { top: auto; bottom: 100%; background: linear-gradient(#c9bdb5 0%, #cdc1b8 60%, #cfc3ba 100%); }
-  .scene::after { bottom: auto; top: 100%; background: linear-gradient(#da9c77 0%, #d79a76 55%, #d29775 100%); }
+  .scene::before { top: auto; bottom: 100%; background: linear-gradient(#cdbfbb 0%, #d1c3bf 60%, #d4c6c2 100%); }
+  .scene::after { bottom: auto; top: 100%; background: linear-gradient(#e29b6f 0%, #de976d 55%, #d8926a 100%); }
 }
 
 /* ---- Navigation --------------------------------------------------------

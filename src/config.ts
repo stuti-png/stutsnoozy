@@ -1,11 +1,13 @@
 // All coordinates are measured against the original 1672 × 941 artwork.
 export const scene = {
-  background: `${import.meta.env.BASE_URL}assets/mela-bioscope-16x9.png`,
+  background: `${import.meta.env.BASE_URL}assets/mela-bioscope-v3.png`,
   width: 1672,
   height: 941,
-  // 592 × 333 is exactly 16:9, centered within the edited inner aperture.
-  screen: { x: 533 / 1672, y: 316 / 941, width: 606 / 1672, height: 340.875 / 941 },
-  title: { x: 635 / 1672, y: 253 / 941, width: 400 / 1672, height: 43 / 941 },
+  // Measured from the v3 artwork: the black aperture runs 387–1268 across and
+  // 262–731 down, so 882 × 470. The player fills it and letterboxes against
+  // the black, which keeps the 16:9 video as large as the frame allows.
+  screen: { x: 387 / 1672, y: 262 / 941, width: 882 / 1672, height: 470 / 941 },
+  title: { x: 694 / 1672, y: 212 / 941, width: 284 / 1672, height: 40 / 941 },
 };
 // Replace this with a local public asset path or a direct playable media URL.
 export const introductionThumbnail = `${import.meta.env.BASE_URL}assets/introduction-thumbnail-mela.jpg`;
