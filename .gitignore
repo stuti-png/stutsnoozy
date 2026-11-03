@@ -1,8 +1,31 @@
+# build + deps
 node_modules/
 dist/
-.DS_Store
 *.tsbuildinfo
-.env
-.env.*
-.netlify/
-.vercel/
+.DS_Store
+
+# internal working document — contains Dalgo pipeline data, do not publish
+What-I-Do-Numbers-and-Systems.md
+
+# stale duplicate of this project
+publish/
+
+# agent tooling
+.agents/
+
+# raw working media, not used by the site
+Images/
+Video Essays/
+*.zip
+*.mp3
+/Video.mp4
+/UpdatedVideoV1 copy.mp4
+/BGwithanimation.mp4
+/BG.png
+/Mela Ambient.gif
+/Image-Thumbnail.jpg
+/Monochrome CRT in a Bombay Living Room.png
+/Screenshot*.png
+
+# evidence + build working notes, kept local
+content/

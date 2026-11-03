@@ -1,6 +1,6 @@
 // All coordinates are measured against the original 1672 × 941 artwork.
 export const scene = {
-  background: '/assets/mela-bioscope-16x9.png',
+  background: `${import.meta.env.BASE_URL}assets/mela-bioscope-16x9.png`,
   width: 1672,
   height: 941,
   // 592 × 333 is exactly 16:9, centered within the edited inner aperture.
@@ -8,8 +8,8 @@ export const scene = {
   title: { x: 635 / 1672, y: 253 / 941, width: 400 / 1672, height: 43 / 941 },
 };
 // Replace this with a local public asset path or a direct playable media URL.
-export const introductionThumbnail = '/assets/introduction-thumbnail-mela.jpg';
-export const introductionVideo = '/assets/introduction-updated-v1.mp4';
+export const introductionThumbnail = `${import.meta.env.BASE_URL}assets/introduction-thumbnail-mela.jpg`;
+export const introductionVideo = `${import.meta.env.BASE_URL}assets/introduction-updated-v1.mp4`;
 export const sectionContent = {
   achievements: { title: 'Achievements', text: 'A few things to look back on.', placeholder: 'Achievements will be added here.' },
   links: { title: 'Links', text: 'Elsewhere, when you need me.', placeholder: 'Links will be added here.' },

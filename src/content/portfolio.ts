@@ -13,7 +13,7 @@ export const portfolioPages:PortfolioPage[] = [
   {
     slug:'demand-gen',title:'Demand Gen',lead:'Helping potential customers understand what they need—and take the next step.',
     intro:['Dalgo provides data software and consulting to nonprofits. I built campaigns, workshops and partnerships that helped teams understand their data problems and explore Dalgo’s services.','One hands-on workshop campaign brought in 2.5× the target for qualified leads.'],
-    photo:{src:'/assets/data-education-presentation.jpg',alt:'Stuti presenting beside a pipeline-plumbing activity slide',caption:'',crop:true,position:'50% 42%'},
+    photo:{src:`${import.meta.env.BASE_URL}assets/data-education-presentation.jpg`,alt:'Stuti presenting beside a pipeline-plumbing activity slide',caption:'',crop:true,position:'50% 42%'},
     sections:[{title:'Video library',library:true,examples:[recap]}]
   },
   {
@@ -53,7 +53,7 @@ export const portfolioPages:PortfolioPage[] = [
 
 // Pixel measurements against the supplied 1672 × 941 artwork. No image text is added.
 const bounds = (x: number, y: number, width: number, height: number) => ({ x: x / 1672, y: y / 941, width: width / 1672, height: height / 941 });
-export const cartArtwork = { src: '/assets/portfolio-chaat-cart.png', width: 1672, height: 941, sign: bounds(585, 139, 470, 70) };
+export const cartArtwork = { src: `${import.meta.env.BASE_URL}assets/portfolio-chaat-cart.png`, width: 1672, height: 941, sign: bounds(585, 139, 470, 70) };
 export const potLinks = [
   { slug: 'demand-gen', label: 'Demand Gen', lines: ['Demand', 'Gen'], pot: bounds(425, 351, 184, 201), tag: bounds(468, 415, 108, 49), crop: bounds(418, 343, 200, 220) },
   { slug: 'positioning-gtm', label: 'Positioning & GTM', lines: ['Positioning', '& GTM'], pot: bounds(591, 317, 169, 197), tag: bounds(627, 382, 104, 57), crop: bounds(583, 310, 185, 213) },
