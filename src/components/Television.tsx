@@ -4,7 +4,6 @@ import { introductionVideo, introductionThumbnail, scene } from '../config';
 export function Television({ active = true }: { active?: boolean }) {
   const video = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
-  const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
 
   async function play() {
@@ -27,11 +26,10 @@ export function Television({ active = true }: { active?: boolean }) {
     <div className="bioscope-player" style={{ left: `${s.x * 100}%`, top: `${s.y * 100}%`, width: `${s.width * 100}%`, height: `${s.height * 100}%` }}>
       <video ref={video} src={introductionVideo || undefined} poster={introductionThumbnail}
         controls={started} playsInline preload="metadata"
-        onPlay={() => { setPlaying(true); setStarted(true); }} onPause={() => setPlaying(false)}
-        onEnded={() => setPlaying(false)} onError={() => setError(true)}
+        onPlay={() => setStarted(true)} onError={() => setError(true)}
         aria-label="Stuti's introduction video" />
-      {!playing && <button className="play" onClick={play} disabled={!introductionVideo || error}
-        aria-label={started ? "Resume Stuti's introduction" : "Play Stuti's introduction with sound"}>
+      {!started && <button className="play" onClick={play} disabled={!introductionVideo || error}
+        aria-label="Play Stuti's introduction with sound">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5 20 12 7 19.5Z" fill="currentColor" /></svg>
       </button>}
       {started && <button className="fullscreen-control" onClick={fullscreen} aria-label="Open introduction fullscreen" title="Fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" strokeWidth="1.5" /></svg></button>}

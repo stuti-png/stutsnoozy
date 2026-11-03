@@ -18,6 +18,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--peacock); outli
 .bioscope-title { position: absolute; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0 3px; color: var(--brick); font-size: 1.5cqw; font-weight: 600; line-height: 1; white-space: nowrap; }
 .bioscope-player { position: absolute; overflow: hidden; padding: 0; border: 0; background: #000; }
 .bioscope-player video { display: block; width: 100%; height: 100%; padding: 0; border: 0; object-fit: contain; background: #000; }
+/* Chrome/Safari draw a large centred overlay play button on touch devices; the native control bar already has one. */
+.bioscope-player video::-webkit-media-controls-overlay-play-button { display: none; }
+.bioscope-player video::-webkit-media-controls-start-playback-button { display: none; }
 .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #f8edcf8a; border-radius: 50%; background: #253832e8; color: var(--cream); cursor: pointer; transition: background .15s; }
 .play:hover { background: var(--brick); }
 .play:focus-visible { outline-color: var(--cream); }
