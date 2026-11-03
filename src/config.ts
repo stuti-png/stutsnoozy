@@ -9,7 +9,7 @@ export const scene = {
 };
 // Replace this with a local public asset path or a direct playable media URL.
 export const introductionThumbnail = `${import.meta.env.BASE_URL}assets/introduction-thumbnail-mela.jpg`;
-export const introductionVideo = `${import.meta.env.BASE_URL}assets/introduction-updated-v1.mp4`;
+export const introductionVideo = `${import.meta.env.BASE_URL}assets/introduction-wispr-flow.mp4`;
 export const sectionContent = {
   achievements: { title: 'Achievements', text: 'A few things to look back on.', placeholder: 'Achievements will be added here.' },
   links: { title: 'Links', text: 'Elsewhere, when you need me.', placeholder: 'Links will be added here.' },

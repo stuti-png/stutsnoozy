@@ -29,3 +29,6 @@ Video Essays/
 
 # evidence + build working notes, kept local
 content/
+
+# source video, shipped copy lives in public/assets
+/\[Final\] Wispr Flow Challenge.mp4
