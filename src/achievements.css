@@ -222,8 +222,15 @@
 /* Dissolve the cart artwork's sky and ground into the page on small screens,
    so the scene has no cut line above or below it. */
 @media (max-width: 700px) {
-  .mobile-cart .cart-art, .portfolio-cart .cart-art {
+  .cart-art {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 86%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 86%, transparent 100%);
   }
+}
+
+/* The pot list uses the folder's Akasha lettering, like every other label
+   on the site, instead of falling back to the body face. */
+@media (max-width: 700px) {
+  .mobile-cart > p { font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 21px; color: var(--brick); }
+  .mobile-pot-links a { font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 21px; }
 }

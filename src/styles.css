@@ -306,3 +306,29 @@ header nav a,header nav a[aria-current=page] {font-size:31.36px;}
     mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
   }
 }
+
+/* ---- Three review fixes ---------------------------------------------- */
+
+/* 1. The closed menu was painting faintly on first load while the opacity
+      transition settled. Taking it out of layout removes the flash; the
+      opening animation gives back the fade. */
+@media (max-width: 700px) {
+  header nav { display: none; transition: none; }
+  header nav[data-open=true] { display: flex; opacity: 1; visibility: visible; transform: none; animation: nav-open .18s cubic-bezier(.2,.8,.3,1); }
+}
+@keyframes nav-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { header nav[data-open=true] { animation: none; } }
+
+/* 2. Devanagari matras rose above the painted cream panel inside the plaque,
+      which is shorter than the anchor box. A smaller optical size sits in it. */
+nav a span[lang=hi] { font-size: .86em; }
+
+/* 3. A lazily loaded photograph showed as a black rectangle until it painted.
+      Video keeps its black surround; photographs rest on paper. */
+.library-screen:has(img) { background: var(--paper); }
+
+/* Wordmark and menu button share one height on mobile; a later desktop rule
+   was forcing the wordmark to 52px against the button's 44px. */
+@media (max-width: 700px) {
+  .wordmark, .nav-toggle { height: 46px; min-height: 46px; }
+}
