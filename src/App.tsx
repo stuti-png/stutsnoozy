@@ -55,6 +55,7 @@ export default function App() {
     </header>
     <main className="room" hidden={view !== 'home'} aria-label="Stuti’s bioscope at the mela">
       <div className="room-visual"><div className="scene"><img className="room-art" src={scene.background} alt="A hand-painted bioscope with peacocks and lotus flowers, surrounded by a lively Indian mela"/><h1 className="bioscope-title" style={{ left: `${scene.title.x * 100}%`, top: `${scene.title.y * 100}%`, width: `${scene.title.width * 100}%`, height: `${scene.title.height * 100}%` }}>Welcome to Stuti’s Bioscope</h1><Television active={view === 'home'} /></div></div>
+      <a className="reach-me" href="https://www.linkedin.com/in/stutinabazza/" target="_blank" rel="noopener noreferrer" aria-label="Reach me on LinkedIn (opens in a new tab)">reach me</a>
     </main>
     {view === 'achievements' && <Achievements route={route} />}
     {view === 'fsas' && <Fsas />}

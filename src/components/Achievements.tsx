@@ -41,7 +41,11 @@ function BioscopeVideo({ example, active, setActive, navigation }: { example: Ex
       <MediaMotif />
       <div className="library-screen">
         {active === example.id ? <iframe src={`https://www.youtube-nocookie.com/embed/${example.youtubeId}?autoplay=1&rel=0`} title={example.title} onLoad={e => e.currentTarget.focus()} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" /> : <button id={`video-${example.id}`} className="library-launch" onClick={() => setActive(example.id)} aria-label={`Play video: ${example.title}`}>
-          <img src={`https://i.ytimg.com/vi/${example.youtubeId}/mqdefault.jpg`} alt="" loading="lazy" />
+          {/* sddefault is 640x480 and exists for every video, unlike maxresdefault,
+              which YouTube answers with a grey 120px placeholder when missing.
+              object-fit: cover trims it to 16:9, giving roughly 640x360. */}
+          <img src={`https://i.ytimg.com/vi/${example.youtubeId}/sddefault.jpg`} alt="" width="640" height="360"
+            loading="eager" fetchPriority="high" decoding="async" />
           <span className="library-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5 20 12 7 19.5Z" fill="currentColor" /></svg></span>
         </button>}
       </div>

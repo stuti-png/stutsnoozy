@@ -332,3 +332,26 @@ nav a span[lang=hi] { font-size: .86em; }
 @media (max-width: 700px) {
   .wordmark, .nav-toggle { height: 46px; min-height: 46px; }
 }
+
+/* The painted aperture is 1.88:1 and the film is 16:9, so "contain" left a
+   black band down each side. "cover" fills the frame, trimming about 2.8%
+   from the top and bottom of the picture. */
+.bioscope-player video { object-fit: cover; }
+
+/* "reach me" sits in the bottom-left of the scene as plain lettering, no
+   plaque, linking out to LinkedIn. */
+.room { position: relative; }
+.reach-me {
+  position: absolute; z-index: 5; left: 26px; bottom: 24px;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0;
+  font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 24px; font-weight: 400;
+  color: #5a241a; white-space: nowrap; text-decoration: none;
+  background: none; border: 0;
+  text-shadow: 0 1px 2px #f8edcfe6, 0 0 6px #f8edcfcc, 0 0 14px #f8edcf99;
+  transition: color .16s ease;
+}
+.reach-me:hover { color: #3f180f; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.reach-me:focus-visible { outline: 3px solid var(--peacock); outline-offset: 4px; }
+@media (max-width: 700px) {
+  .reach-me { left: 18px; bottom: 18px; font-size: 20px; }
+}

@@ -92,7 +92,7 @@
 .library-screen { position: absolute; left: 16.05%; top: 25.272727%; width: 59.2%; height: 60.5454545%; background: #000; }
 .library-screen iframe { display: block; width: 100%; height: 100%; border: 0; background: #000; }
 .library-launch { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
-.library-launch > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.library-launch > img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .library-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); display: grid; place-items: center; width: 44px; height: 44px; background: #253832e8; border: 1px solid #f8edcf80; border-radius: 50%; color: var(--cream); }
 .library-play svg { width: 21px; height: 21px; margin-left: 2px; }
 .library-launch:focus-visible { outline: 3px solid var(--cream); outline-offset: -4px; }
