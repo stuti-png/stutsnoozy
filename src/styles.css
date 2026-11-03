@@ -126,7 +126,7 @@ nav a { font-size: 20px; }
   font-size: 28px;
 }
 .wordmark:hover, nav a:hover { background: none; filter: brightness(.97); }
-.bioscope-title { font-size: 1.86cqw; }
+.bioscope-title { font-size: 1.7cqw; }
 .room { display: block; min-height: 100svh; }
 .room-visual { display: grid; place-items: center; min-height: 100svh; }
 .scene { width: max(100%,177.68332svh); }
