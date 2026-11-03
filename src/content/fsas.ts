@@ -1,5 +1,5 @@
 export const fsas = {
-  title: 'Frequently Short Answers',
+  title: 'Frequently Sought Answers',
   note: {
     heading: 'First, a note about who I am…',
     paragraphs: [

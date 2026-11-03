@@ -1,6 +1,6 @@
 # Stuti’s Portfolio
 
-A React, TypeScript and Vite portfolio with a bioscope introduction, Portfolio Bhandar and Frequently Short Answers.
+A React, TypeScript and Vite portfolio with a bioscope introduction, Portfolio Bhandar and Frequently Sought Answers.
 
 ## Develop
 
@@ -13,7 +13,7 @@ Run `npm run build`. The output is `dist/`. Netlify configuration is included. V
 ## Update content
 
 - Portfolio copy and verified video links: `src/content/portfolio.ts`
-- Frequently Short Answers: `src/content/fsas.ts`
+- Frequently Sought Answers: `src/content/fsas.ts`
 - Homepage media and source-relative alignment: `src/config.ts`
 
 The introduction is a local MP4 loaded on demand; other videos load YouTube embeds when selected. Background music and animation are intentionally disabled.

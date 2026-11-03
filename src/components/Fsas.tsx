@@ -14,7 +14,7 @@ export function Fsas() {
       <h2 id="personal-note-title">{fsas.note.heading}</h2>
       {fsas.note.paragraphs.map(text=><p key={text}>{text}</p>)}
     </section>
-    <section className="fsa-questions" aria-label="Frequently short answers">
+    <section className="fsa-questions" aria-label="Frequently sought answers">
       {fsas.answers.map(answer=><details className="fsa-answer" name="fsa-answers" key={answer.question}>
         <summary><h2>{answer.question}</h2><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></summary>
         <div className="fsa-answer-body">
