@@ -49,7 +49,7 @@ export default function App() {
         </button>
         <nav id="main-nav" aria-label="Main navigation" data-open={menuOpen}>
           <a className="fsa-nav" href="#fsas" aria-current={view === 'fsas' && !linksOpen ? 'page' : undefined}>Frequently Sought Answers</a>
-          <a className="bhandaar-nav" href="#achievements" aria-current={view === 'achievements' && !linksOpen ? 'page' : undefined}>Portfolio Bhandaar</a>
+          <a className="bhandaar-nav" href="#achievements" aria-label="Portfolio Bhandaar" aria-current={view === 'achievements' && !linksOpen ? 'page' : undefined}><span className="nav-full" aria-hidden="true"><span className="nav-english">Portfolio</span> <span lang="hi">भंडार</span></span><span className="nav-abbr" aria-hidden="true">Portfolio Bhandaar</span></a>
         </nav>
       </div>
     </header>
