@@ -211,3 +211,69 @@ header nav a span[lang=hi] {font-size:.84em;}
 @keyframes steam-rise {0%{opacity:0;transform:translate(0,0);}20%{opacity:.62;}65%{opacity:.4;}100%{opacity:0;transform:translate(12px,-35px);}}
 header nav a,header nav a[aria-current=page] {font-size:31.36px;}
 @media(max-width:700px) {header nav a,header nav a[aria-current=page] {font-size:23.52px;}}
+
+/* ---- Mobile scene and navigation -------------------------------------
+   Earlier blocks in this file layer several max-width:700px overrides on
+   top of each other. This block is last so the small-screen result is
+   decided in one place rather than inferred from the cascade. */
+
+/* Short label for the longest plaque; the anchor keeps the full name. */
+.nav-abbr { display: none; }
+
+@media (max-width: 700px) {
+  .nav-full { display: none; }
+  .nav-abbr { display: inline; }
+
+  /* Three plaques, one row, no wrapping. */
+  header { top: 14px; left: 12px; right: 12px; flex-wrap: nowrap; align-items: center; gap: 6px; }
+  header nav { width: auto; margin-left: auto; gap: 6px; flex-wrap: nowrap; }
+  .wordmark, header nav a, header nav a[aria-current=page] {
+    height: 46px; min-height: 46px; padding: 0 4px;
+    border-width: 3px 20px; border-image-width: 3px 20px;
+    font-size: 19px; white-space: nowrap;
+  }
+  .wordmark { font-size: 21px; }
+
+  /* The artwork is 16:9, so a portrait screen can never be filled by it.
+     Extend its own sky and ground past the top and bottom edges instead of
+     leaving the page colour showing. The two colours are sampled from the
+     illustration's top and bottom rows, so the join is seamless. */
+  .room { background: #cfccce; }
+  .room-visual { width: 100%; height: 100svh; display: grid; grid-template-rows: 0.82fr auto 1fr; justify-items: center; overflow: hidden; }
+  .scene { grid-row: 2; width: 200%; }
+  .scene::before, .scene::after {
+    content: ''; display: block; position: absolute; left: 0; right: 0; height: 100svh;
+    background: none; mask-image: none; animation: none; transform: none; inset-inline: 0;
+  }
+  .scene::before { top: auto; bottom: 100%; background: linear-gradient(#c6c3c6, #cfccce 70%); }
+  .scene::after { bottom: auto; top: 100%; background: linear-gradient(#dd9c73, #c8854f); }
+}
+
+@media (max-width: 430px) {
+  .wordmark, header nav a, header nav a[aria-current=page] { font-size: 17px; padding: 0 2px; border-width: 3px 16px; border-image-width: 3px 16px; }
+  .wordmark { font-size: 19px; }
+  header { gap: 4px; }
+  header nav { gap: 4px; }
+}
+
+/* Three plaques of one width, so the row reads as a set rather than three
+   sizes. The widest label ("Portfolio भंडार") sets the measure. */
+header { align-items: center; }
+.wordmark, header nav a, header nav a[aria-current=page] { justify-content: center; }
+@media (max-width: 700px) {
+  header { gap: 6px; }
+  header nav { gap: 6px; }
+  .wordmark, header nav a, header nav a[aria-current=page] {
+    width: clamp(84px, calc((100vw - 36px) / 3), 150px);
+    flex: 0 1 clamp(84px, calc((100vw - 36px) / 3), 150px);
+    padding: 0 2px; font-size: clamp(14px, 4.1vw, 19px);
+  }
+  .wordmark { font-size: clamp(15px, 4.4vw, 21px); }
+}
+/* One height for every plaque, and a label that fits inside its own width. */
+.wordmark, header nav a, header nav a[aria-current=page] { height: 52px; min-height: 52px; }
+@media (max-width: 700px) {
+  .wordmark, header nav a, header nav a[aria-current=page] { height: 46px; min-height: 46px; font-size: clamp(13px, 3.6vw, 17px); } overflow: hidden;
+  .wordmark { font-size: clamp(14px, 3.9vw, 19px); }
+  header nav a span[lang=hi] { font-size: .88em; }
+}

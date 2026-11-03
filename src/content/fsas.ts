@@ -3,13 +3,13 @@ export const fsas = {
   note: {
     heading: 'First, a note about who I am…',
     paragraphs: [
-      "Portfolios and applications have a penchant for reducing identities to the trends and buzzwords of the present. What’s cool right now is growth, go to market, and demand generation. Sure, I’ve played these roles and worn multiple hats in a career spanning five years. But at the heart of it, what I love doing is building technology that carries purpose.",
-      "What differentiates great technology from good technology is more than the intention to build for a market. It’s a pure, relentless commitment to solving a user pain point. The best teams aren’t married to SaaS, a service, or a particular solution. We’re in what’s being called the SaaS apocalypse. Good technology alone won’t cut it anymore.",
-      "Here’s where I come in. At every stage of a product, I help bridge the gap between the market and what we’re building. I build motions that carry a compelling narrative and a vision to the market. Then I listen to its signals and bring them back to the team.",
-      "That hasn’t always panned out well. I’ve seen far too many products sunset in a career that’s lasted five years. A mobile wellness business I worked at lasted three years before being acquired after its subscription model failed. The bottom line? Great sleep for customers, while the founders spent sleepless nights wondering why revenue wasn’t moving.",
-      "What I’ve learned from failure has left me with what I call a devastating sense of optimism. At the root of everything we build is a difficult truth: effort is not equal to outcome. The moment you liberate yourself from that equation, you’re free to chase a problem without needing to bring it back to the solution you started with.",
-      "That’s who I am. I’m a thinker. I’m a ponderer. Creative at times, chasing numbers at others. I love building community. Equally, I love being close to customers.",
-      "That’s the kind of team I want to join. Deeply committed to a problem. Willing to change almost everything else."
+      "Portfolios and applications have a penchant for reducing people to the buzzwords of the moment. Growth, go to market, demand generation. Sure, I have played these roles and worn multiple hats over the past five years. But at the heart of it, I love building technology that carries purpose.",
+      "What separates great technology from good technology is a relentless commitment to solving a real problem for someone. The best teams are willing to question whether that takes SaaS, a service, or something else entirely. The solution can change. The commitment to the problem stays.",
+      "This is where I come in. At every stage of a product, I help bridge the gap between the market and what we are building. I help turn a product vision into a compelling narrative and give people a reason to care. Then I listen to what comes back and bring those signals to the team.",
+      "It has not always worked out. I have seen more products sunset in five years than I would have liked. A mobile wellness business I worked at lasted three years before being acquired after its subscription model failed. Great sleep for customers. Sleepless nights for founders wondering why revenue was not moving.",
+      "Those experiences have left me with what I call a devastating sense of optimism. At the root of everything we build is a difficult truth: effort does not equal outcome. Once you let go of that equation, you can follow the problem wherever it takes you, without needing to steer it back to the solution you started with.",
+      "That is who I am. A thinker. A ponderer. Creative at times, chasing numbers at others. I love building community and being close enough to customers to understand what matters to them.",
+      "And that is the kind of team I want to join. Deeply committed to a problem. Willing to change almost everything else."
 ]
   },
   answers: [

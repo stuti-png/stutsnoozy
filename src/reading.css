@@ -100,3 +100,15 @@
 header nav .fsa-nav {white-space:normal;text-align:center;line-height:1.25;max-width:100%;}
 @media(max-width:1000px){header {flex-wrap:wrap;}header nav {flex-wrap:wrap;justify-content:flex-end;max-width:100%;}}
 @media(max-width:700px){header nav .fsa-nav{height:auto;min-height:58px;padding-block:8px;}}
+
+/* Navigation plaques stay one size on every page, reading pages included. */
+header nav a.fsa-nav { height: 52px; min-height: 52px; padding-block: 0; white-space: nowrap; }
+@media (max-width: 700px) {
+  header nav a.fsa-nav { height: 46px; min-height: 46px; padding-block: 0; }
+  header nav a.bhandaar-nav .nav-abbr { font-size: 1.05em; }
+}
+@media (max-width: 700px) {
+  /* Reading pages keep the same single-row plaque set as the scenes. */
+  .is-reading header, header { flex-wrap: nowrap; align-items: center; gap: 6px; padding: 14px 12px 0; }
+  .is-reading header nav, header nav { flex-wrap: nowrap; gap: 6px; width: auto; margin-left: auto; }
+}
