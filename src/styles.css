@@ -1,0 +1,210 @@
+:root {
+  font-family: 'Anek Latin', sans-serif;
+  --cream: #f8edcf; --paper: #fbf4e3; --ink: #323e35;
+  --green: #49654d; --peacock: #31686b; --brick: #933f30; --lotus: #c77b63;
+  color: var(--ink); background: var(--cream); font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--peacock); outline-offset: 5px; }
+[hidden] { display: none !important; }
+.room { position: relative; width: 100%; height: 100svh; min-height: 520px; overflow: hidden; background: #e7ddc7; }
+.room-visual { position: absolute; inset: 0; overflow: hidden; }
+.scene { position: absolute; left: 50%; top: 50%; width: min(100vw, 177.68332svh); aspect-ratio: 1672 / 941; transform: translate(-50%, -50%); container-type: inline-size; }
+.room-art { display: block; width: 100%; height: 100%; }
+.bioscope-title { position: absolute; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0 3px; color: var(--brick); font-size: 1.5cqw; font-weight: 600; line-height: 1; white-space: nowrap; }
+.bioscope-player { position: absolute; overflow: hidden; padding: 0; border: 0; background: #000; }
+.bioscope-player video { display: block; width: 100%; height: 100%; padding: 0; border: 0; object-fit: contain; background: #000; }
+.play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #f8edcf8a; border-radius: 50%; background: #253832e8; color: var(--cream); cursor: pointer; transition: background .15s; }
+.play:hover { background: var(--brick); }
+.play:focus-visible { outline-color: var(--cream); }
+.play svg { display: block; width: 21px; height: 21px; margin-left: 2px; }
+.play:disabled { cursor: default; }
+.play-status { position: absolute; left: 50%; top: 66%; transform: translateX(-50%); margin: 0; padding: 5px 10px; background: #151613ef; color: var(--cream); font-size: 13px; }
+header { position: absolute; z-index: 2; top: 24px; left: 28px; right: 28px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.wordmark, nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 17px; border: 3px double var(--green); background: var(--cream); color: var(--brick); border-radius: 3px; }
+.wordmark { font-size: 25px; font-weight: 600; }
+nav { display: flex; gap: 12px; align-items: center; }
+nav a { font-size: 17px; font-weight: 500; transition: background .15s; }
+nav a:hover { background: #e9dcba; }
+nav a[aria-current=page] { background: var(--brick); color: var(--cream); border-color: var(--cream); box-shadow: 0 0 0 1px var(--green); }
+dialog { color: var(--ink); background: var(--paper); border: 4px double var(--green); padding: 0; width: min(620px, calc(100% - 32px)); max-height: 85svh; }
+dialog::backdrop { background: #182e29a6; }
+.section-inner { padding: 58px 42px 36px; }
+.close { position: absolute; right: 18px; top: 10px; min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--brick); font-size: 32px; cursor: pointer; }
+.eyebrow { font-size: 13px; color: var(--green); }
+h1 { font-weight: 500; font-size: 42px; line-height: 1.15; margin: 26px 0 16px; }
+p { font-size: 19px; }
+.elsewhere-links { list-style: none; padding: 18px 0; margin: 24px 0; border-block: 1px solid #49654d55; }
+.elsewhere-links a { display: flex; align-items: center; justify-content: space-between; min-height: 48px; color: var(--brick); text-decoration: underline; text-underline-offset: 4px; font-size: 20px; }
+.elsewhere-links span { color: var(--peacock); }
+.back { border: 0; padding: 8px 0; min-height: 44px; background: none; color: var(--brick); cursor: pointer; font-size: 16px; }
+.glass-mask { position: absolute; width: 0; height: 0; pointer-events: none; }
+@media (min-width: 701px) and (max-width: 1000px) {
+ .scene { width: min(145vw, 177.68332svh); }
+}
+@media (max-width: 700px) {
+ header { top: 18px; left: 16px; right: 16px; gap: 12px; flex-wrap: wrap; }
+ .wordmark { font-size: 21px; padding: 4px 13px; }
+ nav { gap: 6px; flex-wrap: wrap; }
+ nav a { font-size: 14px; padding: 5px 10px; }
+ .scene { width: 250vw; top: max(300px, 52%); }
+ .room { min-height: 600px; }
+ .bioscope-title { font-size: 1.5cqw; }
+ .play { width: 44px; height: 44px; }
+ .section-inner { padding: 55px 24px 28px; }
+}
+@media (max-width: 380px) { header { gap: 8px; } nav { width: 100%; justify-content: space-between; } nav a { flex: 1; } }
+@media (max-height: 500px) and (min-width: 701px) { .room { min-height: 440px; } .scene { width: min(100vw, 780px); top: 56%; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.fullscreen-control { position: absolute; top: 4px; right: 4px; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 3px; background: transparent; color: #e8dfc1a6; cursor: pointer; }
+.fullscreen-control svg { width: 14px; height: 14px; }
+.fullscreen-control:focus-visible { outline-color: var(--cream); }
+
+@font-face { font-family: 'Akasha'; src: url('/fonts/akasha-regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+.wordmark, nav a, .nav-tbd { font-family: 'Akasha', 'Anek Latin', sans-serif; font-weight: 400; }
+.wordmark { font-size: 29px; }
+nav a, .nav-tbd { font-size: 22px; }
+.nav-tbd { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 17px; border: 3px double var(--green); border-radius: 3px; background: var(--cream); color: #75644d; cursor: default; }
+@media (max-width:700px) {
+ .wordmark { font-size: 25px; }
+ nav a, .nav-tbd { font-size: 19px; padding: 5px 10px; }
+ header { gap: 10px; }
+}
+@media (max-width:380px) { nav { width: auto; } nav a { flex: initial; } }
+
+.bioscope-title { font-family: 'Akasha', sans-serif; font-weight: 400; font-size: 1.65cqw; letter-spacing: .005em; }
+.fullscreen-control:hover, .fullscreen-control:focus-visible { color: var(--cream); background: #0002; }
+
+nav a { gap: .3em; }
+nav [lang="hi"] { font-family: 'Kohinoor Devanagari', 'Devanagari Sangam MN', 'Nirmala UI', sans-serif; font-size: .92em; font-weight: 500; }
+
+/* Full-width scenes: no viewport-height cap that creates side strips. */
+.room { display: grid; place-items: center; height: auto; min-height: 100svh; padding: 0; }
+.room-visual { position: relative; inset: auto; width: 100%; max-width: none; overflow: hidden; }
+.scene { position: relative; left: auto; top: auto; width: 100%; max-width: none; transform: none; }
+@media(max-width:700px) {
+ .room-visual { display: grid; place-items: center; }
+ .scene { width: 150%; }
+}
+
+/* Supplied transparent floral plaque; text remains live and editable.
+   The image keeps its original aspect ratio, including transparent top/bottom. */
+.wordmark, nav a, nav a[aria-current=page] {
+  border: 0; border-radius: 12px; box-shadow: none;
+  background: transparent url('/assets/floral-nav-plaque.png') center center / 100% auto no-repeat;
+  color: var(--brick); padding: 0 30px; text-decoration: none;
+}
+.wordmark { width: 200px; height: 48px; font-size: 27px; flex-shrink: 0; }
+nav a { width: 290px; height: 58px; font-size: 22px; }
+nav a[aria-current=page] { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.wordmark:hover, nav a:hover { background-color: transparent; filter: brightness(.97); }
+@media(max-width:700px) {
+ .wordmark { width: 120px; height: 44px; font-size: 20px; padding: 0 20px; }
+ nav a { width: 215px; height: 44px; font-size: 18px; padding: 0 26px; }
+}
+
+/* Compact plaques wrap their live labels, with a full touch target. */
+.wordmark, nav a { width: max-content; height: 44px; min-height: 44px; padding: 0 24px; background-size: 100% 74px; white-space: nowrap; }
+.wordmark { font-size: 24px; }
+nav a { font-size: 20px; }
+@media(max-width:700px) { .wordmark, nav a { padding: 0 18px; } .wordmark { font-size: 21px; } nav a { font-size: 17px; } }
+.wordmark, nav a { border-radius: 0; background-size: 100% 70px; }
+
+/* Restore the whole floral artwork with nine-slice borders: caps never crop. */
+.wordmark, nav a, nav a[aria-current=page] {
+  width: auto; height: 52px; min-height: 52px; padding: 0 10px;
+  border: solid transparent; border-width: 4px 30px;
+  border-image: url('/assets/floral-nav-slice.svg') 40 260 40 260 fill / 4px 30px / 0 stretch;
+  border-radius: 0; background: none; color: var(--brick); box-shadow: none;
+  font-size: 28px;
+}
+.wordmark:hover, nav a:hover { background: none; filter: brightness(.97); }
+.bioscope-title { font-size: 2.05cqw; }
+.room { display: block; min-height: 100svh; }
+.room-visual { display: grid; place-items: center; min-height: 100svh; }
+.scene { width: max(100%,177.68332svh); }
+/* Atmospheric motion stays in the peripheral scenery, away from video and labels. */
+.scene::after, .cart-scene::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 6% 35%,#ffe8ac80 0 1px,transparent 2px),radial-gradient(circle at 93% 24%,#fff1c680 0 1px,transparent 2px),radial-gradient(circle at 91% 76%,#ffe0a060 0 1.5px,transparent 3px),radial-gradient(ellipse at 8% 15%,#fff0cc20,transparent 25%);
+  animation: mela-breeze 18s ease-in-out infinite alternate;
+}
+@keyframes mela-breeze { from { transform: translate(0,0); opacity: .35; } to { transform: translate(7px,-6px); opacity: .8; } }
+[data-motion=paused] .scene::after, [data-motion=paused] .cart-scene::after { animation-play-state: paused; }
+.ambience-toggle { position: fixed; z-index: 3; bottom: 10px; left: 18px; min-height: 44px; padding: 6px 10px; color: #4b5142; border: 0; border-radius: 3px; background: #f8edcfc9; font-size: 12px; cursor: pointer; }
+@media(max-width:700px) {
+ .wordmark, nav a, nav a[aria-current=page] { height: 48px; min-height: 48px; padding: 0 5px; border-width: 3px 24px; border-image-width: 3px 24px; font-size: 23px; }
+ .scene { width: 150%; }
+ .ambience-toggle { bottom: 6px; left: 8px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .scene::after, .cart-scene::after { animation: none; opacity: .2; }
+ .ambience-toggle { display: none; }
+}
+.wordmark { font-size:34px; padding-inline:16px; height:58px; }
+@media(max-width:700px) { .wordmark { font-size:28px; padding-inline:10px; height:52px; } }
+/* Masked copies of the same artwork sway only the peripheral foliage. */
+.scene::before, .cart-scene::before { content:''; position:absolute; inset:-2px; pointer-events:none; z-index:1; background:var(--foliage-art) center /100% 100%; mask-image:radial-gradient(ellipse 19% 23% at 0 0,#000 25%,transparent 95%),radial-gradient(ellipse 16% 19% at 100% 0,#000 20%,transparent 95%); transform-origin:50% 0; animation:foliage-sway 7s ease-in-out infinite alternate; }
+.scene { --foliage-art:url('/assets/mela-bioscope-16x9.png'); }
+.cart-scene { --foliage-art:url('/assets/portfolio-chaat-cart.png'); }
+@keyframes foliage-sway { from {transform:translateX(-3px) rotate(-.25deg);} to {transform:translateX(3px) rotate(.25deg);} }
+[data-motion=paused] .scene::before,[data-motion=paused] .cart-scene::before {animation-play-state:paused;}
+@media(prefers-reduced-motion:reduce){.scene::before,.cart-scene::before{animation:none;display:none;}}
+
+/* Balance the Devanagari x-height with the Akasha English lettering. */
+nav a { gap: .24em; }
+nav a span[lang=hi] { font-size: .94em; line-height: 1; transform: translateY(.035em); }
+
+@media(max-width:700px) {
+ header { flex-wrap:wrap; gap:10px; }
+ header nav { margin-left:auto; gap:8px; }
+ header nav a { padding-inline:3px; }
+}
+@media(max-width:460px) { header nav { width:100%; justify-content:flex-end; } }
+
+/* Static artwork: no motion control or ambient animation. */
+.scene::before,.scene::after,.cart-scene::before,.cart-scene::after { display:none; animation:none; }
+/* Recreated motion uses only the current illustration and original SVG steam. */
+.scene-ambience {position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.foliage-breeze {position:absolute;inset:-3px;background-position:center;background-size:100% 100%;mask-image:radial-gradient(ellipse 21% 23% at 0 0,#000 25%,transparent 96%),radial-gradient(ellipse 17% 22% at 100% 0,#000 22%,transparent 96%);transform-origin:50% 0;animation:scene-breeze 11s ease-in-out infinite alternate;}
+@keyframes scene-breeze {from{transform:translate(-3px,0) rotate(-.4deg);}to{transform:translate(4px,2px) rotate(.4deg);}}
+.lantern-light {position:absolute;inset:0;background:radial-gradient(ellipse 2.8% 5% at 7.5% 39%,#ffd27855,transparent 75%),radial-gradient(ellipse 2% 3.5% at 92% 34%,#ffc85a3a,transparent 75%);mix-blend-mode:screen;animation:lantern-breath 6s ease-in-out infinite alternate;}
+@keyframes lantern-breath {from{opacity:.25;}to{opacity:.85;}}
+.tea-steam {position:absolute;left:5.2%;top:46%;width:5.5%;height:15%;overflow:visible;filter:blur(2px);}
+.tea-steam path {fill:none;stroke:#fff7de;stroke-width:3;stroke-linecap:round;opacity:0;animation:steam-rise 8s ease-in-out infinite;}
+.tea-steam path:nth-child(2){animation-delay:-2.7s;}.tea-steam path:nth-child(3){animation-delay:-5.3s;}
+@keyframes steam-rise {0%{opacity:0;transform:translate(0,22px);}25%{opacity:.28;}70%{opacity:.16;}100%{opacity:0;transform:translate(7px,-24px);}}
+.scene-ambience[data-paused=true] * {animation-play-state:paused;}
+.animation-control {position:fixed;z-index:3;bottom:14px;right:18px;display:grid;place-items:center;width:44px;height:44px;padding:12px;border:1px solid #49654d44;border-radius:50%;color:#49654d;background:#f8edcfc9;cursor:pointer;}
+.animation-control svg {width:16px;height:16px;}
+@media(prefers-reduced-motion:reduce){.scene-ambience,.animation-control{display:none;}}
+
+/* One optical baseline and one underline for the bilingual plaque. */
+nav a {position:relative;}
+nav a .nav-english {font-size:1.12em;line-height:1;}
+nav a[aria-current=page] {text-decoration:none;}
+nav a[aria-current=page]::after {content:'';position:absolute;left:10px;right:10px;bottom:9px;height:1px;background:currentColor;}
+/* Visible, slow scenery motion; the bioscope and player remain stationary. */
+.foliage-breeze {inset:-8px;animation-duration:7s;}
+@keyframes scene-breeze {from{transform:translate(-8px,-2px) rotate(-1deg);}to{transform:translate(9px,4px) rotate(1deg);}}
+.tea-steam {left:3.5%;top:53%;width:6%;height:18%;filter:blur(1px);}
+.tea-steam path {stroke-width:4;animation-duration:6s;}
+.tea-steam path:nth-child(2){animation-delay:-2s;}.tea-steam path:nth-child(3){animation-delay:-4s;}
+@keyframes steam-rise {0%{opacity:0;transform:translate(0,20px);}20%{opacity:.62;}65%{opacity:.4;}100%{opacity:0;transform:translate(12px,-35px);}}
+.lantern-light {background:radial-gradient(ellipse 3.5% 6% at 7.5% 39%,#ffd27888,transparent 75%),radial-gradient(ellipse 2.8% 4.5% at 92% 34%,#ffc85a66,transparent 75%);animation-duration:4s;}
+@keyframes lantern-breath {from{opacity:.25;}to{opacity:.95;}}
+/* Every English navigation label uses the same Akasha size. */
+header nav a {font-size:31.36px;}
+header nav a .nav-english {font-size:1em;}
+header nav a span[lang=hi] {font-size:.84em;}
+@media(max-width:700px) {header nav a {font-size:23.52px;}}
+/* Rim measured at (165,605) in the 1672×941 artwork.
+   SVG bases end at y140; translation only rises, never below the rim. */
+.tea-steam {left:6.87799%;top:49.41552%;width:5.38278%;height:14.87779%;}
+@keyframes steam-rise {0%{opacity:0;transform:translate(0,0);}20%{opacity:.62;}65%{opacity:.4;}100%{opacity:0;transform:translate(12px,-35px);}}
+header nav a,header nav a[aria-current=page] {font-size:31.36px;}
+@media(max-width:700px) {header nav a,header nav a[aria-current=page] {font-size:23.52px;}}
