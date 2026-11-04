@@ -1,17 +1,17 @@
 /* The original cart stays intact. Live sign and tags use source-image coordinates. */
-.portfolio-cart { position: relative; min-height: 600px; height: 100svh; overflow: hidden; background: #e9d4b3; }
+.portfolio-cart { position: relative; min-height: 600px; height: 100vh; height: 100svh; overflow: hidden; background: #e9d4b3; }
 .desktop-cart { position: absolute; inset: 0; display: grid; place-items: center; }
-.cart-scene { position: relative; width: min(100vw,177.68332svh); aspect-ratio: 1672 / 941; container-type: inline-size; }
+.cart-scene { position: relative; width: min(100vw,177.68332vh); width: min(100vw,177.68332svh); aspect-ratio: 1672 / 941; container-type: inline-size; }
 .cart-art { display: block; width: 100%; height: 100%; }
-.cart-sign { position: absolute; display: grid; place-items: center; padding: 0; margin: 0; font-family: 'Akasha',sans-serif; font-weight: 400; font-size: 3.1cqw; color: var(--brick); line-height: 1; white-space: nowrap; }
+.cart-sign { position: absolute; display: grid; place-items: center; padding: 0; margin: 0; font-family: 'Akasha',sans-serif; font-weight: 400; font-size: 30px; font-size: 3.1cqw; color: var(--brick); line-height: 1; white-space: nowrap; }
 .pot-link { position: absolute; border-radius: 44%; color: var(--brick); }
-.pot-title { position: absolute; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 1px 2px; font-size: 1cqw; font-weight: 500; line-height: 1.18; }
+.pot-title { position: absolute; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 1px 2px; font-size: 11px; font-size: 1cqw; font-weight: 500; line-height: 1.18; }
 .pot-title > span { display: block; }
 .pot-link:hover .pot-title { color: #682c21; text-decoration: underline; text-underline-offset: 3px; }
 .pot-link:focus-visible { outline: 3px solid var(--peacock); outline-offset: 3px; }
 .mobile-cart { display: none; }
 @media(max-width:900px) {
- .portfolio-cart { height: auto; min-height: 100svh; overflow: visible; background: var(--cream); padding: 110px 24px 48px; }
+ .portfolio-cart { height: auto; min-height: 100vh; min-height: 100svh; overflow: visible; background: var(--cream); padding: 110px 24px 48px; }
  .desktop-cart { display: none; }
  .mobile-cart { display: block; max-width: 340px; margin: auto; }
  .mobile-cart > h1 { font-family: 'Akasha',sans-serif; font-size: 32px; font-weight: 400; color: var(--brick); margin: 14px 0; }
@@ -19,10 +19,10 @@
  .mobile-pot-crop { position: relative; width: 100%; overflow: hidden; margin: 0 0 24px; }
  .pot-crop-source { position: absolute; aspect-ratio: 1672 / 941; }
  .pot-crop-source .cart-scene { width: 100%; }
- .pot-title { font-size: 1cqw; }
+ .pot-title { font-size: 11px; font-size: 1cqw; }
 }
 /* Plain document pages. Artwork is limited to quiet page margins. */
-.reading-page { min-height: 100svh; padding: 120px 32px 96px; color: var(--ink); background: var(--paper) url('/assets/portfolio-reading-paper.png') center top / 100% auto no-repeat; }
+.reading-page { min-height: 100vh; min-height: 100svh; padding: 120px 32px 96px; color: var(--ink); background: var(--paper) url('/assets/portfolio-reading-paper.png') center top / 100% auto no-repeat; }
 .reading-column { width: min(680px,100%); margin-left: max(0px,calc((100vw - 980px)/2)); font-size: 19px; line-height: 1.65; }
 .reading-column p { font-size: inherit; line-height: inherit; color: inherit; margin: 0 0 25px; }
 .reading-column h1 { font-size: 34px; font-weight: 500; line-height: 1.25; margin: 32px 0 28px; color: var(--brick); }
@@ -41,10 +41,10 @@
 @media(max-width:700px) { .reading-page { padding: 130px 24px 64px; background-size: auto 600px; }.reading-column { width:100%; margin:0; font-size:18px; }.reading-column h1 { font-size:30px; }.reading-column h2 { font-size:23px; } }
 
 /* Keep illustrations full width and constrain only the reading text. */
-.portfolio-cart { width: 100%; height: auto; min-height: 100svh; padding: 0; display: grid; align-content: center; }
+.portfolio-cart { width: 100%; height: auto; min-height: 100vh; min-height: 100svh; padding: 0; display: grid; align-content: center; }
 .desktop-cart { position: relative; inset: auto; width: 100%; overflow: hidden; }
 .cart-scene { width: 100%; max-width: none; }
-.reading-page { width: 100%; min-height: 100svh; background-size: cover; background-repeat: no-repeat; }
+.reading-page { width: 100%; min-height: 100vh; min-height: 100svh; background-size: cover; background-repeat: no-repeat; }
 .reading-column { overflow-wrap: break-word; }
 .conversation { padding: 24px 0; border-top: 1px solid #49654d55; }
 .conversation:last-child { border-bottom: 1px solid #49654d55; }
@@ -88,7 +88,7 @@
 /* Crop the existing artwork around the case. The video is still an exact 16:9 rectangle. */
 .library-bioscope { position: relative; width: 100%; aspect-ratio: 1000 / 550; overflow: hidden; container-type: inline-size; margin: 20px 0 4px; }
 .library-art { position: absolute; width: 167.2%; max-width: none; height: auto; left: -37.9%; top: -32.7272727%; pointer-events: none; }
-.library-sign { position: absolute; left: 25.6%; top: 13.272727%; width: 40%; height: 7.818181%; display: grid; place-items: center; color: var(--brick); font: 400 2.2cqw 'Akasha', sans-serif; white-space: nowrap; }
+.library-sign { position: absolute; left: 25.6%; top: 13.272727%; width: 40%; height: 7.818181%; display: grid; place-items: center; color: var(--brick); font: 400 20px 'Akasha', sans-serif; font-size: 2.2cqw; white-space: nowrap; }
 .library-screen { position: absolute; left: 16.05%; top: 25.272727%; width: 59.2%; height: 60.5454545%; background: #000; }
 .library-screen iframe { display: block; width: 100%; height: 100%; border: 0; background: #000; }
 .library-launch { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
@@ -125,8 +125,8 @@
  box-shadow:inset 0 0 3px #945b2112;
 }
 .mobile-pot-links ul { list-style:none; padding-left:22px; border-left:1px solid #49654d44; margin:0 0 0 8px; }
-.portfolio-cart { min-height:100svh; padding-bottom:0; }
-.cart-scene { width:max(100%,177.68332svh); }
+.portfolio-cart { min-height: 100vh; min-height: 100svh; padding-bottom:0; }
+.cart-scene { width: max(100%,177.68332vh); width: max(100%,177.68332svh); }
 @media(max-width:900px) { .desktop-cart .cart-scene { width:170%; } }
 @media(max-width:700px) {
  .library-entry { grid-template-columns:120px minmax(0,1fr); gap:10px 16px; }

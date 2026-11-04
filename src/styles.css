@@ -11,11 +11,11 @@ button { font: inherit; }
 a { color: inherit; text-decoration: none; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--peacock); outline-offset: 5px; }
 [hidden] { display: none !important; }
-.room { position: relative; width: 100%; height: 100svh; min-height: 520px; overflow: hidden; background: #e7ddc7; }
+.room { position: relative; width: 100%; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; background: #e7ddc7; }
 .room-visual { position: absolute; inset: 0; overflow: hidden; }
-.scene { position: absolute; left: 50%; top: 50%; width: min(100vw, 177.68332svh); aspect-ratio: 1672 / 941; transform: translate(-50%, -50%); container-type: inline-size; }
+.scene { position: absolute; left: 50%; top: 50%; width: min(100vw, 177.68332vh); width: min(100vw, 177.68332svh); aspect-ratio: 1672 / 941; transform: translate(-50%, -50%); container-type: inline-size; }
 .room-art { display: block; width: 100%; height: 100%; }
-.bioscope-title { position: absolute; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0 3px; color: var(--brick); font-size: 1.5cqw; font-weight: 600; line-height: 1; white-space: nowrap; }
+.bioscope-title { position: absolute; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0 3px; color: var(--brick); font-size: 20px; font-size: 1.5cqw; font-weight: 600; line-height: 1; white-space: nowrap; }
 .bioscope-player { position: absolute; overflow: hidden; padding: 0; border: 0; background: #000; }
 .bioscope-player video { display: block; width: 100%; height: 100%; padding: 0; border: 0; object-fit: contain; background: #000; }
 /* Chrome/Safari draw a large centred overlay play button on touch devices; the native control bar already has one. */
@@ -34,7 +34,7 @@ nav { display: flex; gap: 12px; align-items: center; }
 nav a { font-size: 17px; font-weight: 500; transition: background .15s; }
 nav a:hover { background: #e9dcba; }
 nav a[aria-current=page] { background: var(--brick); color: var(--cream); border-color: var(--cream); box-shadow: 0 0 0 1px var(--green); }
-dialog { color: var(--ink); background: var(--paper); border: 4px double var(--green); padding: 0; width: min(620px, calc(100% - 32px)); max-height: 85svh; }
+dialog { color: var(--ink); background: var(--paper); border: 4px double var(--green); padding: 0; width: min(620px, calc(100% - 32px)); max-height: 85vh; max-height: 85svh; }
 dialog::backdrop { background: #182e29a6; }
 .section-inner { padding: 58px 42px 36px; }
 .close { position: absolute; right: 18px; top: 10px; min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--brick); font-size: 32px; cursor: pointer; }
@@ -47,7 +47,7 @@ p { font-size: 19px; }
 .back { border: 0; padding: 8px 0; min-height: 44px; background: none; color: var(--brick); cursor: pointer; font-size: 16px; }
 .glass-mask { position: absolute; width: 0; height: 0; pointer-events: none; }
 @media (min-width: 701px) and (max-width: 1000px) {
- .scene { width: min(145vw, 177.68332svh); }
+ .scene { width: min(145vw, 177.68332vh); width: min(145vw, 177.68332svh); }
 }
 @media (max-width: 700px) {
  header { top: 18px; left: 16px; right: 16px; gap: 12px; flex-wrap: wrap; }
@@ -56,7 +56,7 @@ p { font-size: 19px; }
  nav a { font-size: 14px; padding: 5px 10px; }
  .scene { width: 250vw; top: max(300px, 52%); }
  .room { min-height: 600px; }
- .bioscope-title { font-size: 1.5cqw; }
+ .bioscope-title { font-size: 15px; font-size: 1.5cqw; }
  .play { width: 44px; height: 44px; }
  .section-inner { padding: 55px 24px 28px; }
 }
@@ -76,13 +76,13 @@ nav a, .nav-tbd { font-size: 22px; }
 }
 @media (max-width:380px) { nav { width: auto; } nav a { flex: initial; } }
 
-.bioscope-title { font-family: 'Akasha', sans-serif; font-weight: 400; font-size: 1.65cqw; letter-spacing: .005em; }
+.bioscope-title { font-family: 'Akasha', sans-serif; font-weight: 400; font-size: 22px; font-size: 1.65cqw; letter-spacing: .005em; }
 
 nav a { gap: .3em; }
 nav [lang="hi"] { font-family: 'Kohinoor Devanagari', 'Devanagari Sangam MN', 'Nirmala UI', sans-serif; font-size: .92em; font-weight: 500; }
 
 /* Full-width scenes: no viewport-height cap that creates side strips. */
-.room { display: grid; place-items: center; height: auto; min-height: 100svh; padding: 0; }
+.room { display: grid; place-items: center; height: auto; min-height: 100vh; min-height: 100svh; padding: 0; }
 .room-visual { position: relative; inset: auto; width: 100%; max-width: none; overflow: hidden; }
 .scene { position: relative; left: auto; top: auto; width: 100%; max-width: none; transform: none; }
 @media(max-width:700px) {
@@ -122,10 +122,10 @@ nav a { font-size: 20px; }
   font-size: 28px;
 }
 .wordmark:hover, nav a:hover { background: none; filter: brightness(.97); }
-.bioscope-title { font-size: 1.7cqw; }
-.room { display: block; min-height: 100svh; }
-.room-visual { display: grid; place-items: center; min-height: 100svh; }
-.scene { width: max(100%,177.68332svh); }
+.bioscope-title { font-size: 24px; font-size: 1.7cqw; }
+.room { display: block; min-height: 100vh; min-height: 100svh; }
+.room-visual { display: grid; place-items: center; min-height: 100vh; min-height: 100svh; }
+.scene { width: max(100%,177.68332vh); width: max(100%,177.68332svh); }
 /* Atmospheric motion stays in the peripheral scenery, away from video and labels. */
 .scene::after, .cart-scene::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -219,10 +219,10 @@ header nav a,header nav a[aria-current=page] {font-size:31.36px;}
    join reads as haze rather than a cut. */
 @media (max-width: 700px) {
   .room { background: #d4c6c2; }
-  .room-visual { width: 100%; height: 100svh; display: grid; grid-template-rows: 1fr auto 0.58fr; justify-items: center; overflow: hidden; }
+  .room-visual { width: 100%; height: 100vh; height: 100svh; display: grid; grid-template-rows: 1fr auto 0.58fr; justify-items: center; overflow: hidden; }
   .scene { grid-row: 2; width: 150%; }
   .scene::before, .scene::after {
-    content: ''; display: block; position: absolute; left: 0; right: 0; height: 100svh;
+    content: ''; display: block; position: absolute; left: 0; right: 0; height: 100vh; height: 100svh;
     background: none; mask-image: none; animation: none; transform: none; inset-inline: 0;
   }
   .scene::before { top: auto; bottom: 100%; background: linear-gradient(#cdbfbb 0%, #d1c3bf 60%, #d4c6c2 100%); }
@@ -321,7 +321,7 @@ nav a span[lang=hi] { font-size: .86em; }
 
 /* 3. A lazily loaded photograph showed as a black rectangle until it painted.
       Video keeps its black surround; photographs rest on paper. */
-.library-screen:has(img) { background: var(--paper); }
+.library-screen { background: var(--paper); }
 
 /* Wordmark and menu button share one height on mobile; a later desktop rule
    was forcing the wordmark to 52px against the button's 44px. */
