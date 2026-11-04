@@ -1,5 +1,6 @@
+import { cartScenes, useSceneVariant } from '../responsiveScenes';
 import { useLayoutEffect, useEffect, useRef, useState, useId } from 'react';
-import { cartArtwork, potLinks, portfolioPages, portfolioHref, legacyPortfolioRoutes, type PotLink, type Example, type PortfolioPhoto } from '../content/portfolio';
+import { potLinks, portfolioPages, portfolioHref, legacyPortfolioRoutes, type PotLink, type Example, type PortfolioPhoto } from '../content/portfolio';
 
 function MediaMotif() { return <svg className="library-motif" viewBox="0 0 40 18" aria-hidden="true"><path d="M20 15C8 15 5 9 5 5c7 0 12 3 15 10C17 7 18 3 20 1c3 4 3 8 0 14C24 8 29 5 35 5c0 6-6 10-15 10Z" fill="currentColor" stroke="var(--cream)" strokeWidth="1"/></svg>; }
 
@@ -7,8 +8,11 @@ function rememberCart(slug: string) {
   sessionStorage.setItem('portfolio-return', JSON.stringify({ slug, scroll: window.scrollY }));
 }
 function CartScene({ pots, mobile = false }: { pots: PotLink[]; mobile?: boolean }) {
+  const variant = useSceneVariant();
+  const { artwork: cartArtwork, pots: variantPots } = cartScenes[variant];
   const sign = cartArtwork.sign;
-  return <div className="cart-scene">
+  if (variant !== 'desktop') pots = variantPots;
+  return <div className="cart-scene" data-variant={variant} style={{ aspectRatio: `${cartArtwork.width} / ${cartArtwork.height}` }}>
     <img className="cart-art" src={cartArtwork.src} alt={mobile ? '' : 'A painted chaat cart with five pots at an Indian mela'} />
     {!mobile && <h1 className="cart-sign" style={{ left: `${sign.x * 100}%`, top: `${sign.y * 100}%`, width: `${sign.width * 100}%`, height: `${sign.height * 100}%` }}>Portfolio Bhandaar</h1>}
     {pots.map(p => {

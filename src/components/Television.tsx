@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { introductionVideo, introductionThumbnail, scene } from '../config';
 
-export function Television({ active = true }: { active?: boolean }) {
+export function Television({ active = true, screen = scene.screen }: { active?: boolean; screen?: typeof scene.screen }) {
   const video = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ export function Television({ active = true }: { active?: boolean }) {
 
   useEffect(() => { if (!active) video.current?.pause(); }, [active]);
 
-  const s = scene.screen;
+  const s = screen;
   return <>
     <div className="bioscope-player" style={{ left: `${s.x * 100}%`, top: `${s.y * 100}%`, width: `${s.width * 100}%`, height: `${s.height * 100}%` }}>
       <video ref={video} src={introductionVideo || undefined} poster={introductionThumbnail}

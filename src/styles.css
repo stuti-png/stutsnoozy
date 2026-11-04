@@ -366,4 +366,4 @@ header nav a[aria-current=page],
 nav a span[lang=hi],
 header nav a span[lang=hi] { font-family: 'Yatra One', sans-serif; }
 /* Yatra One is wider than Akasha, so the nameplate lettering comes down to fit. */
-.bioscope-title { font-size: 17px; font-size: 1.2cqw; letter-spacing: -.005em; }
+.bioscope-title { font-size: 15px; font-size: 1.02cqw; letter-spacing: -.005em; }

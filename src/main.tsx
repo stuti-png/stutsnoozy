@@ -9,4 +9,5 @@ import App from './App';
 import './styles.css';
 import './achievements.css';
 import './reading.css';
+import './responsive-scenes.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

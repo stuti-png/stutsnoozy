@@ -1,0 +1,40 @@
+/* Portrait assets and overlays share one coordinate system. Landscape is unchanged. */
+@media (max-width: 1024px) and (orientation: portrait) {
+ .room { min-height:100svh; background:#eac39e; }
+ .room-visual { width:100%; height:auto; min-height:100svh; display:flex; align-items:flex-start; justify-content:center; overflow:hidden; background:linear-gradient(#d8cfce,#df9e74); }
+ .room .scene, .desktop-cart .cart-scene { position:relative; top:auto; left:auto; transform:none; width:100%; max-width:none; flex-shrink:0; }
+ .scene::before,.scene::after,.cart-scene::before,.cart-scene::after { display:none; }
+ .room-art,.cart-art { width:100%; height:100%; display:block; mask-image:none; -webkit-mask-image:none; }
+ .bioscope-player { background:#000; }
+ .bioscope-player video { object-fit:contain; }
+ .bioscope-title { font-size:12px; font-size:1.74cqw; }
+ .play { min-width:44px; min-height:44px; }
+ .portfolio-cart { display:block; padding:0; height:auto; min-height:100svh; overflow-x:clip; background:var(--cream); }
+ .desktop-cart { display:block; position:relative; inset:auto; width:100%; }
+ .cart-sign { font-size:4.4cqw; }
+ .pot-title { font-size:2cqw; padding:0; line-height:1.15; }
+ .pot-title::before { display:none; }
+ .mobile-cart { display:block; width:100%; max-width:none; margin:0; padding:20px 24px 32px; }
+ .mobile-cart > p { margin:0 0 12px; font-size:19px; }
+ .mobile-pot-links { padding:0; margin:0; list-style:none; }
+ .mobile-pot-links a { display:flex; align-items:center; min-height:48px; font-size:19px; }
+ .reach-me { bottom:12px; left:18px; min-height:44px; padding:0 8px; background:#faefd9e8; border-radius:3px; text-shadow:none; }
+ header nav[data-open=true] { padding:12px 16px; background:#faefd9f5; border:1px solid #8b7352; border-radius:4px; box-shadow:0 5px 18px #452c2020; }
+ .nav-toggle { background:#faefd9e8; border-radius:4px; }
+}
+
+@media (max-width:600px) and (orientation:portrait) {
+ .room-art { mask-image:linear-gradient(#000 0%,#000 94%,transparent 100%); -webkit-mask-image:linear-gradient(#000 0%,#000 94%,transparent 100%); }
+}
+
+/* Overrides: keep the decisions already made for this site. */
+@media (max-width: 1024px) and (orientation: portrait) {
+  /* The aperture is 1.83:1 against a 16:9 film. "contain" puts a black band
+     down each side; "cover" fills it and trims 2.7% top and bottom. */
+  .bioscope-player video { object-fit: cover; }
+  /* "reach me" is plain lettering, not a chip. */
+  .reach-me { background: none; border-radius: 0; padding: 0; text-shadow: 0 1px 2px #f8edcfe6, 0 0 6px #f8edcfcc, 0 0 14px #f8edcf99; }
+  /* The menu button and its list stay uncontained. */
+  .nav-toggle { background: none; border-radius: 0; }
+  header nav[data-open=true] { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+}

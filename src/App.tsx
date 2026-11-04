@@ -1,11 +1,14 @@
+import { homeScenes, useSceneVariant } from './responsiveScenes';
 import { useEffect, useRef, useState } from 'react';
 import { Fsas } from './components/Fsas';
 import { Television } from './components/Television';
 import { Achievements } from './components/Achievements';
-import { scene, sectionContent, cassetteLinks } from './config';
+import { sectionContent, cassetteLinks } from './config';
 type View = 'home' | 'achievements' | 'fsas';
 function initialView(): View { return location.hash === '#fsas' ? 'fsas' : location.hash.startsWith('#achievements') ? 'achievements' : 'home'; }
 export default function App() {
+  const variant = useSceneVariant();
+  const scene = homeScenes[variant];
   const [route, setRoute] = useState(location.hash || '#home');
   const lastRoute = useRef(location.hash === '#links' ? '#home' : location.hash || '#home');
   const [view, setView] = useState<View>(initialView);
@@ -54,7 +57,7 @@ export default function App() {
       </div>
     </header>
     <main className="room" hidden={view !== 'home'} aria-label="Stuti’s bioscope at the mela">
-      <div className="room-visual"><div className="scene"><img className="room-art" src={scene.background} alt="A hand-painted bioscope with peacocks and lotus flowers, surrounded by a lively Indian mela"/><h1 className="bioscope-title" style={{ left: `${scene.title.x * 100}%`, top: `${scene.title.y * 100}%`, width: `${scene.title.width * 100}%`, height: `${scene.title.height * 100}%` }}>Welcome to Stuti’s Bioscope</h1><Television active={view === 'home'} /></div></div>
+      <div className="room-visual"><div className="scene" data-variant={variant} style={{ aspectRatio: `${scene.width} / ${scene.height}` }}><img className="room-art" src={scene.background} alt="A hand-painted bioscope with peacocks and lotus flowers, surrounded by a lively Indian mela"/><h1 className="bioscope-title" style={{ left: `${scene.title.x * 100}%`, top: `${scene.title.y * 100}%`, width: `${scene.title.width * 100}%`, height: `${scene.title.height * 100}%` }}>Welcome to Stuti’s Bioscope</h1><Television screen={scene.screen} active={view === 'home'} /></div></div>
       <a className="reach-me" href="https://www.linkedin.com/in/stutinabazza/" target="_blank" rel="noopener noreferrer" aria-label="Reach me on LinkedIn (opens in a new tab)">reach me</a>
     </main>
     {view === 'achievements' && <Achievements route={route} />}
