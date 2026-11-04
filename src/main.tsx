@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import '@fontsource/yatra-one/400.css';
 import '@fontsource/anek-latin/400.css';
 import '@fontsource/anek-latin/500.css';
 import '@fontsource/anek-latin/600.css';

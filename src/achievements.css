@@ -234,3 +234,8 @@
   .mobile-cart > p { font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 21px; color: var(--brick); }
   .mobile-pot-links a { font-family: 'Akasha', 'Anek Latin', sans-serif; font-size: 21px; }
 }
+
+/* Pot labels in Yatra One, matching the navigation plaques. */
+.pot-title,
+.mobile-cart > p,
+.mobile-pot-links a { font-family: 'Yatra One', 'Akasha', 'Anek Latin', sans-serif; font-weight: 400; }

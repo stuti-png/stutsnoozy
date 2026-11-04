@@ -351,3 +351,19 @@ nav a span[lang=hi] { font-size: .86em; }
 @media (max-width: 700px) {
   .reach-me { left: 18px; bottom: 18px; font-size: 20px; }
 }
+
+/* ---- Yatra One for the display lettering ------------------------------
+   Replaces Akasha on the navigation plaques, the bioscope nameplate and the
+   pot labels. Yatra One carries Devanagari natively, so "भंडार" no longer
+   falls back to a system face. */
+.wordmark,
+header nav a,
+header nav a[aria-current=page],
+.bioscope-title {
+  font-family: 'Yatra One', 'Akasha', 'Anek Latin', sans-serif;
+  font-weight: 400;
+}
+nav a span[lang=hi],
+header nav a span[lang=hi] { font-family: 'Yatra One', sans-serif; }
+/* Yatra One is wider than Akasha, so the nameplate lettering comes down to fit. */
+.bioscope-title { font-size: 17px; font-size: 1.2cqw; letter-spacing: -.005em; }
