@@ -373,7 +373,9 @@ header nav a span[lang=hi] { font-family: 'Yatra One', sans-serif; }
    with their content, so the desktop row came out oversized. */
 @media (min-width: 701px) {
   header nav a, header nav a[aria-current=page] {
-    font-size: 19px; border-width: 3px 22px; border-image-width: 3px 22px; padding: 0 6px; height: 46px; min-height: 46px;
+    font-size: 16px; border-width: 3px 17px; border-image-width: 3px 17px; padding: 0 4px; height: 40px; min-height: 40px;
   }
-  .wordmark { font-size: 21px; border-width: 3px 22px; border-image-width: 3px 22px; padding: 0 6px; height: 46px; min-height: 46px; }
+  .wordmark { font-size: 18px; border-width: 3px 17px; border-image-width: 3px 17px; padding: 0 4px; height: 40px; min-height: 40px; }
+  header { top: 18px; left: 22px; right: 22px; gap: 12px; }
+  header nav { gap: 10px; }
 }
