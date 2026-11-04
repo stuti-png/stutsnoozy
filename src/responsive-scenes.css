@@ -49,3 +49,10 @@
   .room .scene { width: max(100%, calc(100svh * 1080 / 1920)); flex-shrink: 0; }
   .room-art { mask-image: none; -webkit-mask-image: none; }
 }
+
+/* The bioscope is drawn 29px left of centre in the 1080-wide portrait art
+   (aperture centre 511 against a canvas centre of 540), so the scene leans
+   left on a phone. Nudge it back until the illustration is corrected. */
+@media (max-width: 600px) and (orientation: portrait) {
+  .room .scene { transform: translateX(2.685%); }
+}
