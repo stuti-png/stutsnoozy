@@ -17,10 +17,6 @@ export function Television({ active = true }: { active?: boolean }) {
 
   useEffect(() => { if (!active) video.current?.pause(); }, [active]);
 
-  async function fullscreen() {
-    try { await video.current?.requestFullscreen(); } catch { /* Native video controls remain available. */ }
-  }
-
   const s = scene.screen;
   return <>
     <div className="bioscope-player" style={{ left: `${s.x * 100}%`, top: `${s.y * 100}%`, width: `${s.width * 100}%`, height: `${s.height * 100}%` }}>
@@ -32,7 +28,6 @@ export function Television({ active = true }: { active?: boolean }) {
         aria-label="Play Stuti's introduction with sound">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5 20 12 7 19.5Z" fill="currentColor" /></svg>
       </button>}
-      {started && <button className="fullscreen-control" onClick={fullscreen} aria-label="Open introduction fullscreen" title="Fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" strokeWidth="1.5" /></svg></button>}
       {(error || !introductionVideo) && <p className="play-status" role="status">{error ? 'Video unavailable' : 'Introduction coming soon'}</p>}
     </div>
   </>;

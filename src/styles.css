@@ -63,9 +63,6 @@ p { font-size: 19px; }
 @media (max-width: 380px) { header { gap: 8px; } nav { width: 100%; justify-content: space-between; } nav a { flex: 1; } }
 @media (max-height: 500px) and (min-width: 701px) { .room { min-height: 440px; } .scene { width: min(100vw, 780px); top: 56%; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-.fullscreen-control { position: absolute; top: 4px; right: 4px; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 3px; background: transparent; color: #e8dfc1a6; cursor: pointer; }
-.fullscreen-control svg { width: 14px; height: 14px; }
-.fullscreen-control:focus-visible { outline-color: var(--cream); }
 
 @font-face { font-family: 'Akasha'; src: url('/fonts/akasha-regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
 .wordmark, nav a, .nav-tbd { font-family: 'Akasha', 'Anek Latin', sans-serif; font-weight: 400; }
@@ -80,7 +77,6 @@ nav a, .nav-tbd { font-size: 22px; }
 @media (max-width:380px) { nav { width: auto; } nav a { flex: initial; } }
 
 .bioscope-title { font-family: 'Akasha', sans-serif; font-weight: 400; font-size: 1.65cqw; letter-spacing: .005em; }
-.fullscreen-control:hover, .fullscreen-control:focus-visible { color: var(--cream); background: #0002; }
 
 nav a { gap: .3em; }
 nav [lang="hi"] { font-family: 'Kohinoor Devanagari', 'Devanagari Sangam MN', 'Nirmala UI', sans-serif; font-size: .92em; font-weight: 500; }

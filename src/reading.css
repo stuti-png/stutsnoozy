@@ -97,3 +97,9 @@
 .fsa-questions {margin-top:48px;}
 @media(max-width:700px){.personal-note h2{font-size:23px;}.fsa-questions{margin-top:40px;}}
 
+
+/* A link sitting on its own line is a target, not part of a sentence, so it
+   gets a full 44px. Links inside running prose keep their inline size. */
+.reading-column p > a:only-child,
+.library-related a,
+.mobile-pot-links a { display: inline-flex; align-items: center; min-height: 44px; }
