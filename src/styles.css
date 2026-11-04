@@ -372,6 +372,8 @@ header nav a span[lang=hi] { font-family: 'Yatra One', sans-serif; }
    Yatra One renders much larger at the same point size and the plaques grow
    with their content, so the desktop row came out oversized. */
 @media (min-width: 701px) {
-  header nav a, header nav a[aria-current=page] { font-size: 23px; }
-  .wordmark { font-size: 25px; }
+  header nav a, header nav a[aria-current=page] {
+    font-size: 19px; border-width: 3px 22px; border-image-width: 3px 22px; padding: 0 6px; height: 46px; min-height: 46px;
+  }
+  .wordmark { font-size: 21px; border-width: 3px 22px; border-image-width: 3px 22px; padding: 0 6px; height: 46px; min-height: 46px; }
 }
