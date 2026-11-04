@@ -38,3 +38,14 @@
   .nav-toggle { background: none; border-radius: 0; }
   header nav[data-open=true] { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
 }
+
+/* The 9:16 artwork cannot fill a 9:19.5 phone by width, which left a flat
+   band of ground below it. Scale by height instead and centre: at 390x844
+   that crops about 42px from each side, against 17% of the screen sitting
+   empty. The bioscope gets larger with it. */
+@media (max-width: 600px) and (orientation: portrait) {
+  .room { height: 100svh; min-height: 100svh; overflow: hidden; }
+  .room-visual { height: 100svh; min-height: 100svh; align-items: center; justify-content: center; overflow: hidden; }
+  .room .scene { width: max(100%, calc(100svh * 1080 / 1920)); flex-shrink: 0; }
+  .room-art { mask-image: none; -webkit-mask-image: none; }
+}
