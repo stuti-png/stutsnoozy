@@ -367,3 +367,11 @@ nav a span[lang=hi],
 header nav a span[lang=hi] { font-family: 'Yatra One', sans-serif; }
 /* Yatra One is wider than Akasha, so the nameplate lettering comes down to fit. */
 .bioscope-title { font-size: 15px; font-size: 1.02cqw; letter-spacing: -.005em; }
+
+/* The 31.36px tabs and 34px wordmark were sized for Akasha, a compact face.
+   Yatra One renders much larger at the same point size and the plaques grow
+   with their content, so the desktop row came out oversized. */
+@media (min-width: 701px) {
+  header nav a, header nav a[aria-current=page] { font-size: 23px; }
+  .wordmark { font-size: 25px; }
+}

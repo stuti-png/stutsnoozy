@@ -7,7 +7,8 @@ export const scene = {
   // 262–731 down, so 882 × 470. The player fills it and letterboxes against
   // the black, which keeps the 16:9 video as large as the frame allows.
   screen: { x: 387 / 1672, y: 262 / 941, width: 882 / 1672, height: 470 / 941 },
-  title: { x: 694 / 1672, y: 212 / 941, width: 284 / 1672, height: 40 / 941 },
+  // Plaque measured from the artwork: x 694-978, y 224-246.
+  title: { x: 694 / 1672, y: 224 / 941, width: 285 / 1672, height: 23 / 941 },
 };
 // Replace this with a local public asset path or a direct playable media URL.
 export const introductionThumbnail = `${import.meta.env.BASE_URL}assets/introduction-thumbnail-mela.jpg`;
